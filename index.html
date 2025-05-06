@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Delay Analysis</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .section-title {
+            margin-bottom: 40px;
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        .btn-upload {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        .btn-upload:hover {
+            background-color: #0056b3;
+        }
+        .btn-action {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        .btn-action:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="display-4 section-title">Flight Delay Analysis</h1>
+        <p class="lead">Upload your flight dataset to analyze trends, causes, and frequency of delays!</p>
+    </section>
+
+    <!-- Upload Section -->
+    <section>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h5>Upload Dataset (CSV)</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="/upload" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="file" class="form-label">Choose a CSV file</label>
+                                <input type="file" name="file" class="form-control" id="file" required>
+                            </div>
+                            <button type="submit" class="btn btn-upload w-100">Upload File</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preprocess and Analysis Section -->
+    <section class="my-5">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h5>Data Preprocessing</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Clean and preprocess your uploaded data</p>
+                        <form action="/preprocess" method="POST">
+                            <button type="submit" class="btn btn-action w-100">Preprocess Data</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h5>Generate Report</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>View a comprehensive report on the flight delays</p>
+                        <form action="/generate_report" method="POST">
+                            <button type="submit" class="btn btn-action w-100">Generate Full Report</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Graph Generation Section -->
+    <section class="my-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h5>Generate Graphs</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p>Get graphical representations of flight delays</p>
+                        <form action="/generate_report" method="post">
+                            <button type="submit" class="btn btn-primary">Generate Graphs</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Specific Report Section -->
+    <section class="my-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        <h5>Specific Flight Report</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="/generate_flight_report" method="POST">
+                            <div class="mb-3">
+                                <label for="flight_number" class="form-label">Enter Flight Number</label>
+                                <input type="text" name="flight_number" class="form-control" id="flight_number" placeholder="e.g., AA123" required>
+                            </div>
+                            <button type="submit" class="btn btn-action w-100">Generate Flight Report</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Bootstrap 5 JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
